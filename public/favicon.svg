@@ -1,0 +1,16 @@
+<svg width="44" height="28" viewBox="0 0 44 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- NO <rect> HERE -->
+
+  <!-- B -->
+  <line x1="3" y1="2" x2="3" y2="26" stroke="white" stroke-width="2" stroke-linecap="square"/>
+  <line x1="3" y1="2" x2="14" y2="2" stroke="white" stroke-width="2" stroke-linecap="square"/>
+  <line x1="14" y1="2" x2="14" y2="14" stroke="white" stroke-width="2" stroke-linecap="square"/>
+  <line x1="3" y1="14" x2="16" y2="14" stroke="white" stroke-width="2" stroke-linecap="square"/>
+  <line x1="16" y1="14" x2="16" y2="26" stroke="white" stroke-width="2" stroke-linecap="square"/>
+  <line x1="3" y1="26" x2="16" y2="26" stroke="white" stroke-width="2" stroke-linecap="square"/>
+
+  <!-- I -->
+  <line x1="26" y1="2" x2="41" y2="2" stroke="#00f2ff" stroke-width="2" stroke-linecap="square"/>
+  <line x1="33.5" y1="2" x2="33.5" y2="26" stroke="#00f2ff" stroke-width="2" stroke-linecap="square"/>
+  <line x1="26" y1="26" x2="41" y2="26" stroke="#00f2ff" stroke-width="2" stroke-linecap="square"/>
+</svg>
