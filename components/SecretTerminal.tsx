@@ -32,6 +32,30 @@ const playBuzzer = () => playSynthSound(120, 0.35, "sawtooth", 0.03);
 const playScoreSound = () => playSynthSound(880, 0.08, "sine", 0.02);
 const playBounceSound = () => playSynthSound(440, 0.06, "sine", 0.015);
 
+const safeEval = (exprStr: string, aVal: number, bVal: number): number => {
+  const clean = exprStr
+    .toLowerCase()
+    .replace(/and/g, "&&")
+    .replace(/or/g, "||")
+    .replace(/not/g, "!")
+    .replace(/xor/g, "!==")
+    .replace(/a/g, aVal ? "1" : "0")
+    .replace(/b/g, bVal ? "1" : "0");
+  
+  // Strip all characters except digits, spaces, parentheses, and boolean operators
+  const allowedChars = /^[01\s&|!=()]+$/;
+  if (!allowedChars.test(clean)) {
+    return -1;
+  }
+  
+  try {
+    const func = new Function(`return (${clean})`);
+    return func() ? 1 : 0;
+  } catch {
+    return -1;
+  }
+};
+
 export default function SecretTerminal() {
   const [open, setOpen] = useState(false);
   const [tab, setTab] = useState<"terminal" | "arcade">("terminal");
@@ -102,14 +126,18 @@ export default function SecretTerminal() {
 
   const handleCommand = (e: React.FormEvent) => {
     e.preventDefault();
-    const cmd = terminalInput.trim().toLowerCase();
-    if (!cmd) return;
+    const rawInput = terminalInput.trim();
+    if (!rawInput) return;
+
+    const args = rawInput.split(/\s+/);
+    const command = args[0].toLowerCase();
+    const restExpr = args.slice(1).join(" ");
 
     playSynthSound(700, 0.05, "sine");
-    setLogs((prev) => [...prev, `guest@bilal-system:~$ ${terminalInput}`]);
+    setLogs((prev) => [...prev, `guest@bilal-system:~$ ${rawInput}`]);
     setTerminalInput("");
 
-    switch (cmd) {
+    switch (command) {
       case "help":
         setLogs((prev) => [
           ...prev,
@@ -117,10 +145,64 @@ export default function SecretTerminal() {
           "  sysinfo   - Get Bilal's core engineering profile",
           "  decrypt   - Decrypt academic achievements matrix",
           "  matrix    - Toggle full-screen matrix digital rain",
+          "  vhdl      - Simulates VHDL timing waveforms on custom logic",
           "  clear     - Wipe console history logs",
           "  play      - Navigate to Retro Arcade Games Room",
           "  exit      - Close the security terminal console",
         ]);
+        break;
+
+      case "vhdl":
+      case "logic":
+        if (!restExpr) {
+          setLogs((prev) => [
+            ...prev,
+            "Usage: vhdl <expression>",
+            "Simulates a VHDL logic analyzer for inputs A (fast clock) and B (slow clock).",
+            "Supported operators: AND, OR, NOT, XOR",
+            "Examples:",
+            "  vhdl A AND B",
+            "  vhdl A XOR B",
+            "  vhdl NOT A OR B",
+          ]);
+        } else {
+          const signalA = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0];
+          const signalB = [1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0];
+          const signalY: number[] = [];
+          
+          let hasError = false;
+          for (let i = 0; i < 16; i++) {
+            const val = safeEval(restExpr, signalA[i], signalB[i]);
+            if (val === -1) {
+              hasError = true;
+              break;
+            }
+            signalY.push(val);
+          }
+
+          if (hasError) {
+            playBuzzer();
+            setLogs((prev) => [
+              ...prev,
+              `ERROR: FAILED TO PARSE EXPRESSION '${restExpr}'.`,
+              "Ensure you only use inputs A, B and operators: AND, OR, NOT, XOR.",
+            ]);
+          } else {
+            const drawWave = (sig: number[]) => sig.map((v) => (v === 1 ? "██" : "__")).join("");
+            
+            setLogs((prev) => [
+              ...prev,
+              `VHDL LOGIC SIMULATION REPORT [EXPR: ${restExpr.toUpperCase()}]`,
+              "--------------------------------------------------",
+              `  A CLK : ${drawWave(signalA)}`,
+              `  B CLK : ${drawWave(signalB)}`,
+              "--------------------------------------------------",
+              `  Y OUT : ${drawWave(signalY)}`,
+              "--------------------------------------------------",
+            ]);
+            playSynthSound(900, 0.15, "sine");
+          }
+        }
         break;
 
       case "clear":
@@ -189,7 +271,7 @@ export default function SecretTerminal() {
 
       default:
         playBuzzer();
-        setLogs((prev) => [...prev, `ERROR: COMMAND '${cmd}' NOT RECOGNIZED. TYPE 'help' FOR UTILITIES.`]);
+        setLogs((prev) => [...prev, `ERROR: COMMAND '${command}' NOT RECOGNIZED. TYPE 'help' FOR UTILITIES.`]);
         break;
     }
   };

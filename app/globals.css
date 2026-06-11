@@ -26,3 +26,75 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Theme transition animation */
+body, main, section, footer, div, p, span, h2, h3, button, a, svg {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Light Theme Variables and Overrides */
+.light {
+  --background: #fdfdfd;
+  --foreground: #111111;
+  --accent: #0099aa;
+  --accent2: #e04f1d;
+}
+
+.light body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.light main, 
+.light section, 
+.light footer, 
+.light nav {
+  background-color: var(--background) !important;
+  border-color: rgba(17, 17, 17, 0.1) !important;
+}
+
+/* Class-based colour overrides for text opacity in light mode */
+.light .text-white { color: var(--foreground) !important; }
+.light .text-white\/80 { color: rgba(17, 17, 17, 0.8) !important; }
+.light .text-white\/70 { color: rgba(17, 17, 17, 0.7) !important; }
+.light .text-white\/60 { color: rgba(17, 17, 17, 0.6) !important; }
+.light .text-white\/50 { color: rgba(17, 17, 17, 0.5) !important; }
+.light .text-white\/40 { color: rgba(17, 17, 17, 0.4) !important; }
+.light .text-white\/30 { color: rgba(17, 17, 17, 0.3) !important; }
+.light .text-white\/20 { color: rgba(17, 17, 17, 0.2) !important; }
+.light .text-white\/15 { color: rgba(17, 17, 17, 0.15) !important; }
+.light .text-white\/10 { color: rgba(17, 17, 17, 0.1) !important; }
+
+/* Class-based border overrides */
+.light .border-white\/10 { border-color: rgba(17, 17, 17, 0.1) !important; }
+.light .border-white\/15 { border-color: rgba(17, 17, 17, 0.15) !important; }
+.light .border-white\/20 { border-color: rgba(17, 17, 17, 0.2) !important; }
+
+.light .divide-white\/10 > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgba(17, 17, 17, 0.1) !important;
+}
+
+/* Class-based background overrides */
+.light .bg-white\/5 { background-color: rgba(17, 17, 17, 0.03) !important; }
+.light .bg-white\/10 { background-color: rgba(17, 17, 17, 0.05) !important; }
+.light .bg-white\/15 { background-color: rgba(17, 17, 17, 0.08) !important; }
+.light .bg-white\/20 { background-color: rgba(17, 17, 17, 0.1) !important; }
+
+.light .bg-black\/20 { background-color: rgba(240, 240, 240, 0.8) !important; }
+.light .bg-black\/40 { background-color: rgba(240, 240, 240, 0.6) !important; }
+.light .bg-black\/80 { background-color: rgba(240, 240, 240, 0.85) !important; }
+.light .bg-black\/90 { background-color: rgba(240, 240, 240, 0.95) !important; }
+.light .bg-\[\#080808\] { background-color: var(--background) !important; }
+.light .bg-\[\#050505\] { background-color: var(--background) !important; }
+.light .bg-\[\#080808\]\/80 { background-color: rgba(250, 250, 250, 0.8) !important; }
+.light .bg-\[\#080808\]\/95 { background-color: rgba(250, 250, 250, 0.95) !important; }
+
+/* Interactive Hover changes */
+.light .hover\:bg-white\/\[0\.03\]:hover { background-color: rgba(17, 17, 17, 0.03) !important; }
+.light .hover\:bg-white\/10:hover { background-color: rgba(17, 17, 17, 0.08) !important; }
+.light .group:hover { background-color: rgba(17, 17, 17, 0.015) !important; }
+
+/* Background Grid Adaptations */
+.light .bg-grid-white\/\[0\.02\] {
+  background-image: radial-gradient(rgba(17, 17, 17, 0.07) 1px, transparent 1px) !important;
+}

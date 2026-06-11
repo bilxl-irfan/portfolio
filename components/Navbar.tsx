@@ -1,7 +1,7 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 
 const navItems = ["Home", "About", "Skills", "Projects", "Contact"];
 
@@ -99,6 +99,39 @@ function CircuitLogo() {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [isLight, setIsLight] = useState(() => {
+    if (typeof window !== "undefined") {
+      const theme = localStorage.getItem("theme");
+      const root = document.documentElement;
+      return theme === "light" || (theme === null && root.classList.contains("light"));
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const root = document.documentElement;
+      if (isLight) {
+        root.classList.add("light");
+      } else {
+        root.classList.remove("light");
+      }
+    }
+  }, [isLight]);
+
+  const toggleLightMode = () => {
+    if (typeof window === "undefined") return;
+    const root = document.documentElement;
+    if (root.classList.contains("light")) {
+      root.classList.remove("light");
+      localStorage.setItem("theme", "dark");
+      setIsLight(false);
+    } else {
+      root.classList.add("light");
+      localStorage.setItem("theme", "light");
+      setIsLight(true);
+    }
+  };
 
   const handleNav = (item: string) => {
     setOpen(false);
@@ -135,7 +168,16 @@ export default function Navbar() {
         </span>
 
         {/* Logo — right corner on both mobile and desktop */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 z-[110]">
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleLightMode}
+            className="text-white/50 hover:text-[#00f2ff] p-1.5 rounded transition-all duration-200 cursor-pointer"
+            aria-label="Toggle Light/Dark Theme"
+          >
+            {isLight ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+          
           <CircuitLogo />
 
           {/* Mobile hamburger */}

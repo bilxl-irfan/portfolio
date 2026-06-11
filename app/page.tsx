@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import About from '@/components/About';
 import SecretTerminal from '@/components/SecretTerminal';
+import PidLab from '@/components/PidLab';
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <div id="about"><About /></div>
       <div id="skills"><Skills /></div>
       <div id="projects"><Projects /></div>
+      <div id="pid-lab"><PidLab /></div>
       <Footer />
     </main>
   );

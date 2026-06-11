@@ -2,6 +2,9 @@
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
 import Experience from "./Experience";
+import dynamic from "next/dynamic";
+
+const PcbWireframe = dynamic(() => import("./PcbWireframe"), { ssr: false });
 
 function useScramble(text: string, trigger: boolean) {
   const [display, setDisplay] = useState(text);
@@ -109,13 +112,19 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Name */}
-      <div
-        className="relative z-10 px-6 md:px-16 py-10 text-[clamp(72px,16vw,200px)] font-black leading-none tracking-tighter uppercase"
-        style={{ fontFamily: "'Inter', sans-serif" }}
-      >
-        <AnimatedName text="BILAL" delay={0} />
-        <AnimatedName text="IRFAN" delay={0.3} outline />
+      {/* Name & 3D PCB Wireframe grid */}
+      <div className="relative z-10 px-6 md:px-16 py-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div
+          className="lg:col-span-7 text-[clamp(72px,16vw,200px)] font-black leading-none tracking-tighter uppercase"
+          style={{ fontFamily: "'Inter', sans-serif" }}
+        >
+          <AnimatedName text="BILAL" delay={0} />
+          <AnimatedName text="IRFAN" delay={0.3} outline />
+        </div>
+        
+        <div className="hidden lg:block lg:col-span-5 h-[320px] relative">
+          <PcbWireframe />
+        </div>
       </div>
 
       {/* Bottom Bar */}
