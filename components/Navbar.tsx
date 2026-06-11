@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
-const navItems = ["Home", "Skills", "Projects", "Contact"];
+const navItems = ["Home", "About", "Skills", "Projects", "Contact"];
 
 function CircuitLogo() {
   return (
@@ -184,7 +184,7 @@ export default function Navbar() {
             <div className="absolute inset-0 pointer-events-none bg-[repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(255,255,255,0.012)_2px,rgba(255,255,255,0.012)_4px)]" />
 
             <p className="text-xs font-mono text-white/20 tracking-[0.3em] mb-10">
-              // NAVIGATE
+              {"// NAVIGATE"}
             </p>
 
             <div className="flex flex-col gap-2">

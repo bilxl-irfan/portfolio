@@ -33,7 +33,7 @@ export default function Skills() {
   return (
     <section id="skills" className="bg-[#080808] py-24 px-6 md:px-16 border-b border-white/10">
       <div className="mb-16">
-        <p className="text-xs font-mono text-white/30 tracking-[0.3em] mb-3">// CORE_CAPABILITIES</p>
+        <p className="text-xs font-mono text-white/30 tracking-[0.3em] mb-3">{"// CORE_CAPABILITIES"}</p>
         <h2 className="text-6xl md:text-8xl font-black tracking-tighter text-white uppercase">
           Engineering<br/><span className="italic text-white/20">Stack</span>
         </h2>

@@ -102,7 +102,7 @@ export default function Experience() {
       return traces;
     };
 
-    let traces = buildTraces();
+    const traces = buildTraces();
     const packets: Packet[] = [];
 
     const spawnInterval = setInterval(() => {

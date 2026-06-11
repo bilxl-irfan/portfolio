@@ -8,10 +8,7 @@ function useScramble(text: string, trigger: boolean) {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@$%";
 
   useEffect(() => {
-    if (!trigger) {
-      setDisplay(text);
-      return;
-    }
+    if (!trigger) return;
     let iteration = 0;
     const interval = setInterval(() => {
       setDisplay(
@@ -28,7 +25,7 @@ function useScramble(text: string, trigger: boolean) {
     return () => clearInterval(interval);
   }, [trigger, text]);
 
-  return display;
+  return trigger ? display : text;
 }
 
 function AnimatedName({
@@ -85,7 +82,7 @@ function AnimatedName({
       initial={{ opacity: 0, y: 80 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
-      className="cursor-none select-none"
+      className="select-none"
     >
       {scrambled}
     </motion.div>
@@ -105,10 +102,10 @@ export default function Hero() {
 
       {/* Top Bar */}
       <div className="relative z-10 flex justify-between items-start px-6 pt-20 text-xs text-white/40 font-mono">
-        <span>// SYSTEM_INITIALIZED / REV_0.1</span>
+        <span>{"// SYSTEM_INITIALIZED / REV_0.1"}</span>
         <div className="text-right">
           <div>43.6532° N, 79.3832° W</div>
-          <div>TORONTO_METROPOLITAN_UNI</div>
+          <div>UNI_OF_WATERLOO // TMU_ALUM</div>
         </div>
       </div>
 

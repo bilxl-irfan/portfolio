@@ -11,9 +11,9 @@ export default function Footer() {
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
       >
-        <p className="text-xs font-mono text-white/30 tracking-[0.3em] mb-6">// INITIATE_CONTACT</p>
+        <p className="text-xs font-mono text-white/30 tracking-[0.3em] mb-6">{"// INITIATE_CONTACT"}</p>
         <h2 className="text-5xl md:text-8xl font-black tracking-tighter text-white uppercase leading-none mb-4">
-          LET'S BUILD THE
+          {"LET'S BUILD THE"}
         </h2>
         <h2 className="text-5xl md:text-8xl font-black tracking-tighter text-white/20 italic uppercase leading-none mb-16">
           NEXT SYSTEM
@@ -36,7 +36,7 @@ export default function Footer() {
             <a href="https://www.linkedin.com/in/bilal-irfan-575583233/" className="text-white/30 hover:text-white transition-colors"><Linkedin size={18} /></a>
             <a href="mailto:irfan.bilal0904@gmail.com" className="text-white/30 hover:text-white transition-colors"><Mail size={18} /></a>
           </div>
-          <p className="text-xs font-mono text-white/20">© BILAL IRFAN // SYSTEM_ID: 501176502</p>
+          <p className="text-xs font-mono text-white/20">{"© BILAL IRFAN // SYSTEM_ACTIVE"}</p>
         </div>
       </motion.div>
     </footer>
