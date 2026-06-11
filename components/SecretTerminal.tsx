@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Terminal as TermIcon, Gamepad2 } from "lucide-react";
+import { X, Terminal as TermIcon, Gamepad2, Sliders } from "lucide-react";
+import PidLab from "./PidLab";
 
 // Web Audio API Sound Synthesizer
 const playSynthSound = (freq: number, duration: number, type: OscillatorType = "sine", vol = 0.015) => {
@@ -58,7 +59,7 @@ const safeEval = (exprStr: string, aVal: number, bVal: number): number => {
 
 export default function SecretTerminal() {
   const [open, setOpen] = useState(false);
-  const [tab, setTab] = useState<"terminal" | "arcade">("terminal");
+  const [tab, setTab] = useState<"terminal" | "arcade" | "pid">("terminal");
   const [terminalInput, setTerminalInput] = useState("");
   const [logs, setLogs] = useState<string[]>([
     "SYSTEM SECURITY TERMINAL V2.0 // DECRYPTOR ACTIVE",
@@ -146,10 +147,17 @@ export default function SecretTerminal() {
           "  decrypt   - Decrypt academic achievements matrix",
           "  matrix    - Toggle full-screen matrix digital rain",
           "  vhdl      - Simulates VHDL timing waveforms on custom logic",
+          "  pid       - Open the quadcopter PID simulation lab",
           "  clear     - Wipe console history logs",
           "  play      - Navigate to Retro Arcade Games Room",
           "  exit      - Close the security terminal console",
         ]);
+        break;
+
+      case "pid":
+      case "lab":
+        setTab("pid");
+        setLogs((prev) => [...prev, "REDIRECTING TO PID CONTROLLER LAB..."]);
         break;
 
       case "vhdl":
@@ -338,6 +346,20 @@ export default function SecretTerminal() {
                     <Gamepad2 size={12} />
                     ARCADE
                   </button>
+                  <button
+                    onClick={() => {
+                      setTab("pid");
+                      playClick();
+                    }}
+                    className={`flex items-center gap-1.5 px-3 py-1 border transition-colors ${
+                      tab === "pid"
+                        ? "border-[#00f2ff]/40 text-[#00f2ff] bg-[#00f2ff]/5"
+                        : "border-transparent text-white/40 hover:text-white"
+                    }`}
+                  >
+                    <Sliders size={12} />
+                    PID LAB
+                  </button>
                 </div>
                 <button
                   onClick={() => {
@@ -383,7 +405,7 @@ export default function SecretTerminal() {
                       />
                     </form>
                   </div>
-                ) : (
+                ) : tab === "arcade" ? (
                   // ARCADE GAMES TAB
                   <div className="flex-1 p-4 flex flex-col md:flex-row gap-6 overflow-y-auto">
                     {activeGame === "none" ? (
@@ -436,6 +458,11 @@ export default function SecretTerminal() {
                       // Render Brick Breaker Game
                       <BrickBreakerGame backToMenu={() => setActiveGame("none")} />
                     )}
+                  </div>
+                ) : (
+                  // PID LAB TAB
+                  <div className="flex-1 p-4 overflow-y-auto">
+                    <PidLab />
                   </div>
                 )}
               </div>
