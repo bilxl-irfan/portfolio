@@ -9,6 +9,7 @@
   --project-cyan: #00f2ff;
   --project-purple: #a855f7;
   --project-green: #22c55e;
+  --name-stroke: rgba(255, 255, 255, 0.2);
 }
 
 * {
@@ -46,6 +47,7 @@ body, main, section, footer, div, p, span, h2, h3, button, a, svg {
   --project-cyan: #0099aa;
   --project-purple: #7e22ce;
   --project-green: #15803d;
+  --name-stroke: rgba(17, 17, 17, 0.25);
 }
 
 .light body {

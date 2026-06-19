@@ -69,7 +69,7 @@ function AnimatedName({
         rotateY: springY,
         transformPerspective: 800,
         ...(outline
-          ? { WebkitTextStroke: "2px rgba(255,255,255,0.2)", color: "transparent" }
+          ? { WebkitTextStroke: "2px var(--name-stroke)", color: "transparent" }
           : {}),
       }}
       onMouseMove={handleMouse}
