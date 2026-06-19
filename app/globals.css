@@ -5,6 +5,10 @@
   --foreground: #ededed;
   --accent: #00f2ff;
   --accent2: #ff5722;
+  --project-orange: #ff5722;
+  --project-cyan: #00f2ff;
+  --project-purple: #a855f7;
+  --project-green: #22c55e;
 }
 
 * {
@@ -38,6 +42,10 @@ body, main, section, footer, div, p, span, h2, h3, button, a, svg {
   --foreground: #111111;
   --accent: #0099aa;
   --accent2: #e04f1d;
+  --project-orange: #d03c0f;
+  --project-cyan: #0099aa;
+  --project-purple: #7e22ce;
+  --project-green: #15803d;
 }
 
 .light body {
@@ -98,3 +106,61 @@ body, main, section, footer, div, p, span, h2, h3, button, a, svg {
 .light .bg-grid-white\/\[0\.02\] {
   background-image: radial-gradient(rgba(17, 17, 17, 0.07) 1px, transparent 1px) !important;
 }
+
+/* Color overrides for #00f2ff (cyan) in light mode */
+.light .text-\[\#00f2ff\] { color: var(--accent) !important; }
+.light .hover\:text-\[\#00f2ff\]:hover { color: var(--accent) !important; }
+.light .border-\[\#00f2ff\] { border-color: var(--accent) !important; }
+.light .hover\:border-\[\#00f2ff\]:hover { border-color: var(--accent) !important; }
+.light .group:hover .group-hover\:border-\[\#00f2ff\] { border-color: var(--accent) !important; }
+.light .bg-\[\#00f2ff\] { background-color: var(--accent) !important; }
+.light .hover\:bg-\[\#00f2ff\]:hover { background-color: var(--accent) !important; }
+.light .bg-\[\#00f2ff\]\/5 { background-color: color-mix(in srgb, var(--accent) 5%, transparent) !important; }
+.light .accent-\[\#00f2ff\] { accent-color: var(--accent) !important; }
+
+/* Text opacities with cyan in light mode */
+.light .text-\[\#00f2ff\]\/60 { color: color-mix(in srgb, var(--accent) 60%, transparent) !important; }
+.light .text-\[\#00f2ff\]\/70 { color: color-mix(in srgb, var(--accent) 70%, transparent) !important; }
+.light .text-\[\#00f2ff\]\/80 { color: color-mix(in srgb, var(--accent) 80%, transparent) !important; }
+
+/* CRT visualizer container gradient shift in light mode */
+.light .from-black\/40.via-\[\#0a0a0a\]\/60.to-\[\#00f2ff\]\/5 {
+  background-image: linear-gradient(to bottom right, rgba(253, 253, 253, 0.8), rgba(245, 245, 245, 0.8), rgba(0, 153, 170, 0.06)) !important;
+}
+.light .border-\[\#00f2ff\]\/15 {
+  border-color: rgba(0, 153, 170, 0.15) !important;
+}
+
+/* Oscilloscope border-white/5 override in light mode */
+.light .border-white\/5 {
+  border-color: rgba(17, 17, 17, 0.06) !important;
+}
+
+/* Restore exact dark-theme overrides inside the retro-terminal (even when light mode is active) */
+.light .retro-terminal .text-white { color: white !important; }
+.light .retro-terminal .text-white\/80 { color: rgba(255, 255, 255, 0.8) !important; }
+.light .retro-terminal .text-white\/70 { color: rgba(255, 255, 255, 0.7) !important; }
+.light .retro-terminal .text-white\/60 { color: rgba(255, 255, 255, 0.6) !important; }
+.light .retro-terminal .text-white\/50 { color: rgba(255, 255, 255, 0.5) !important; }
+.light .retro-terminal .text-white\/40 { color: rgba(255, 255, 255, 0.4) !important; }
+.light .retro-terminal .text-white\/30 { color: rgba(255, 255, 255, 0.3) !important; }
+.light .retro-terminal .text-white\/20 { color: rgba(255, 255, 255, 0.2) !important; }
+.light .retro-terminal .text-white\/15 { color: rgba(255, 255, 255, 0.15) !important; }
+.light .retro-terminal .text-white\/10 { color: rgba(255, 255, 255, 0.1) !important; }
+
+.light .retro-terminal .border-white\/10 { border-color: rgba(255, 255, 255, 0.1) !important; }
+.light .retro-terminal .border-white\/15 { border-color: rgba(255, 255, 255, 0.15) !important; }
+.light .retro-terminal .border-white\/20 { border-color: rgba(255, 255, 255, 0.2) !important; }
+
+.light .retro-terminal .bg-white\/5 { background-color: rgba(255, 255, 255, 0.05) !important; }
+.light .retro-terminal .bg-white\/10 { background-color: rgba(255, 255, 255, 0.1) !important; }
+.light .retro-terminal .bg-white\/15 { background-color: rgba(255, 255, 255, 0.15) !important; }
+.light .retro-terminal .bg-white\/20 { background-color: rgba(255, 255, 255, 0.2) !important; }
+
+.light .retro-terminal .bg-black\/20 { background-color: rgba(0, 0, 0, 0.2) !important; }
+.light .retro-terminal .bg-black\/40 { background-color: rgba(0, 0, 0, 0.4) !important; }
+.light .retro-terminal .bg-black\/80 { background-color: rgba(0, 0, 0, 0.8) !important; }
+.light .retro-terminal .bg-black\/90 { background-color: rgba(0, 0, 0, 0.9) !important; }
+.light .retro-terminal .border-\[\#00f2ff\]\/20 { border-color: rgba(0, 242, 255, 0.2) !important; }
+.light .retro-terminal .bg-\[\#0b0b0b\]\/90 { background-color: rgba(11, 11, 11, 0.9) !important; }
+

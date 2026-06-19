@@ -8,7 +8,7 @@ const projects = [
     company: "MOSTAVIO",
     description: "Architecting an AR display system for a one-man drone. Bridging real-time telemetry with OLED hardware integration.",
     tech: ["C++", "AR Systems", "Hardware SDKs"],
-    color: "#ff5722",
+    color: "var(--project-orange)",
     link: null,
     visual: {
       label: "AR_HUD",
@@ -18,7 +18,7 @@ const projects = [
         { x1: 10, y1: 80, x2: 75, y2: 80 },
       ],
       circles: [{ cx: 80, cy: 50, r: 18 }, { cx: 80, cy: 50, r: 10 }],
-      color: "#ff5722",
+      color: "var(--project-orange)",
     },
   },
   {
@@ -26,7 +26,7 @@ const projects = [
     company: "RESEARCH",
     description: "Deep learning framework optimized for edge devices. Detecting agricultural threats in real-time with 90%+ precision.",
     tech: ["PyTorch", "YOLOv8", "Computer Vision"],
-    color: "#00f2ff",
+    color: "var(--project-cyan)",
     link: null,
     visual: {
       label: "CV_MODEL",
@@ -39,7 +39,7 @@ const projects = [
         { x1: 65, y1: 35, x2: 35, y2: 65 },
       ],
       circles: [{ cx: 50, cy: 50, r: 14 }],
-      color: "#00f2ff",
+      color: "var(--project-cyan)",
     },
   },
   {
@@ -47,7 +47,7 @@ const projects = [
     company: "COMPUTER VISION",
     description: "Real-time hand gesture recognition for mid-air drawing. Built with OpenCV and MediaPipe for zero-latency tracking.",
     tech: ["Python", "OpenCV", "MediaPipe"],
-    color: "#a855f7",
+    color: "var(--project-purple)",
     link: "https://github.com/bilxl-irfan",
     visual: {
       label: "GESTURE_MAP",
@@ -60,7 +60,7 @@ const projects = [
         { x1: 70, y1: 40, x2: 80, y2: 75 },
       ],
       circles: [{ cx: 50, cy: 10, r: 4 }],
-      color: "#a855f7",
+      color: "var(--project-purple)",
     },
   },
   {
@@ -68,7 +68,7 @@ const projects = [
     company: "FULL STACK",
     description: "News aggregation platform with ML-powered personalization. Built with React Native, served with a custom recommendation engine.",
     tech: ["React Native", "TypeScript", "ML"],
-    color: "#22c55e",
+    color: "var(--project-green)",
     link: "https://github.com/bilxl-irfan",
     visual: {
       label: "DATA_FEED",
@@ -79,7 +79,7 @@ const projects = [
         { x1: 15, y1: 85, x2: 55, y2: 85 },
       ],
       circles: [],
-      color: "#22c55e",
+      color: "var(--project-green)",
     },
   },
 ];
@@ -93,7 +93,7 @@ function ArHudVisual({ index }: { index: number }) {
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full md:w-72 h-36 md:h-44 border border-white/10 relative overflow-hidden flex-shrink-0 group-hover:border-[#ff5722]/30 transition-colors duration-300 bg-black/40 backdrop-blur-md rounded-lg p-2"
+      className="w-full md:w-72 h-36 md:h-44 border border-white/10 relative overflow-hidden flex-shrink-0 group-hover:border-[var(--project-orange)] transition-colors duration-300 bg-black/40 backdrop-blur-md rounded-lg p-2"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,87,34,0.06)_0%,transparent_70%)]" />
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
@@ -102,7 +102,7 @@ function ArHudVisual({ index }: { index: number }) {
           cx="50"
           cy="50"
           r="30"
-          stroke="#ff5722"
+          stroke="var(--project-orange)"
           strokeWidth="0.5"
           strokeOpacity="0.4"
           fill="none"
@@ -111,8 +111,8 @@ function ArHudVisual({ index }: { index: number }) {
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
         />
         {/* Compass Crosshair lines */}
-        <line x1="50" y1="12" x2="50" y2="88" stroke="#ff5722" strokeWidth="0.25" strokeOpacity="0.2" />
-        <line x1="12" y1="50" x2="88" y2="50" stroke="#ff5722" strokeWidth="0.25" strokeOpacity="0.2" />
+        <line x1="50" y1="12" x2="50" y2="88" stroke="var(--project-orange)" strokeWidth="0.25" strokeOpacity="0.2" />
+        <line x1="12" y1="50" x2="88" y2="50" stroke="var(--project-orange)" strokeWidth="0.25" strokeOpacity="0.2" />
 
         {/* Pitch Ladder (tilts and moves up/down) */}
         <motion.g
@@ -120,33 +120,33 @@ function ArHudVisual({ index }: { index: number }) {
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         >
           {/* Horizon line */}
-          <line x1="30" y1="50" x2="45" y2="50" stroke="#ff5722" strokeWidth="0.75" strokeOpacity="0.8" />
-          <line x1="55" y1="50" x2="70" y2="50" stroke="#ff5722" strokeWidth="0.75" strokeOpacity="0.8" />
+          <line x1="30" y1="50" x2="45" y2="50" stroke="var(--project-orange)" strokeWidth="0.75" strokeOpacity="0.8" />
+          <line x1="55" y1="50" x2="70" y2="50" stroke="var(--project-orange)" strokeWidth="0.75" strokeOpacity="0.8" />
           {/* Ladder tick 1 */}
-          <line x1="38" y1="40" x2="62" y2="40" stroke="#ff5722" strokeWidth="0.5" strokeOpacity="0.5" />
-          <line x1="38" y1="40" x2="38" y2="43" stroke="#ff5722" strokeWidth="0.5" strokeOpacity="0.5" />
-          <line x1="62" y1="40" x2="62" y2="43" stroke="#ff5722" strokeWidth="0.5" strokeOpacity="0.5" />
+          <line x1="38" y1="40" x2="62" y2="40" stroke="var(--project-orange)" strokeWidth="0.5" strokeOpacity="0.5" />
+          <line x1="38" y1="40" x2="38" y2="43" stroke="var(--project-orange)" strokeWidth="0.5" strokeOpacity="0.5" />
+          <line x1="62" y1="40" x2="62" y2="43" stroke="var(--project-orange)" strokeWidth="0.5" strokeOpacity="0.5" />
           {/* Ladder tick 2 */}
-          <line x1="38" y1="60" x2="62" y2="60" stroke="#ff5722" strokeWidth="0.5" strokeOpacity="0.5" />
-          <line x1="38" y1="60" x2="38" y2="57" stroke="#ff5722" strokeWidth="0.5" strokeOpacity="0.5" />
-          <line x1="62" y1="60" x2="62" y2="57" stroke="#ff5722" strokeWidth="0.5" strokeOpacity="0.5" />
+          <line x1="38" y1="60" x2="62" y2="60" stroke="var(--project-orange)" strokeWidth="0.5" strokeOpacity="0.5" />
+          <line x1="38" y1="60" x2="38" y2="57" stroke="var(--project-orange)" strokeWidth="0.5" strokeOpacity="0.5" />
+          <line x1="62" y1="60" x2="62" y2="57" stroke="var(--project-orange)" strokeWidth="0.5" strokeOpacity="0.5" />
         </motion.g>
 
         {/* Center reticle */}
-        <circle cx="50" cy="50" r="2" fill="none" stroke="#ff5722" strokeWidth="0.5" />
+        <circle cx="50" cy="50" r="2" fill="none" stroke="var(--project-orange)" strokeWidth="0.5" />
       </svg>
 
       {/* Side HUD text readouts */}
-      <div className="absolute top-3 left-3 text-[8px] font-mono text-[#ff5722]/60 tracking-wider">
+      <div className="absolute top-3 left-3 text-[8px] font-mono tracking-wider" style={{ color: "color-mix(in srgb, var(--project-orange) 60%, transparent)" }}>
         ALT: <motion.span animate={{ opacity: [0.7, 1, 0.7] }} transition={{ duration: 0.5, repeat: Infinity }}>142m</motion.span>
       </div>
-      <div className="absolute top-3 right-3 text-[8px] font-mono text-[#ff5722]/60 tracking-wider">
+      <div className="absolute top-3 right-3 text-[8px] font-mono tracking-wider" style={{ color: "color-mix(in srgb, var(--project-orange) 60%, transparent)" }}>
         SPD: 42km/h
       </div>
-      <div className="absolute bottom-3 left-3 text-[8px] font-mono text-[#ff5722]/60 tracking-widest">
+      <div className="absolute bottom-3 left-3 text-[8px] font-mono tracking-widest" style={{ color: "color-mix(in srgb, var(--project-orange) 60%, transparent)" }}>
         [ AR_HUD_MODE ]
       </div>
-      <div className="absolute bottom-3 right-3 text-[8px] font-mono text-[#ff5722]/80 font-black">
+      <div className="absolute bottom-3 right-3 text-[8px] font-mono font-black" style={{ color: "color-mix(in srgb, var(--project-orange) 80%, transparent)" }}>
         PITCH: ACTIVE
       </div>
 
@@ -158,7 +158,8 @@ function ArHudVisual({ index }: { index: number }) {
       
       {/* Scanline sweep */}
       <motion.div
-        className="absolute left-0 right-0 h-[1px] opacity-20 bg-gradient-to-r from-transparent via-[#ff5722] to-transparent"
+        className="absolute left-0 right-0 h-[1px] opacity-20"
+        style={{ backgroundImage: "linear-gradient(to right, transparent, var(--project-orange), transparent)" }}
         animate={{ top: ["0%", "100%"] }}
         transition={{ duration: 3.5, repeat: Infinity, ease: "linear", delay: index * 0.2 }}
       />
@@ -196,20 +197,20 @@ function CvModelVisual({ index }: { index: number }) {
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full md:w-72 h-36 md:h-44 border border-white/10 relative overflow-hidden flex-shrink-0 group-hover:border-[#00f2ff]/30 transition-colors duration-300 bg-black/40 backdrop-blur-md rounded-lg p-2"
+      className="w-full md:w-72 h-36 md:h-44 border border-white/10 relative overflow-hidden flex-shrink-0 group-hover:border-[var(--project-cyan)] transition-colors duration-300 bg-black/40 backdrop-blur-md rounded-lg p-2"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,242,255,0.06)_0%,transparent_70%)]" />
       
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
         {/* Coordinate grids */}
-        <line x1="0" y1="20" x2="100" y2="20" stroke="rgba(0, 242, 255, 0.05)" strokeWidth="0.25" />
-        <line x1="0" y1="40" x2="100" y2="40" stroke="rgba(0, 242, 255, 0.05)" strokeWidth="0.25" />
-        <line x1="0" y1="60" x2="100" y2="60" stroke="rgba(0, 242, 255, 0.05)" strokeWidth="0.25" />
-        <line x1="0" y1="80" x2="100" y2="80" stroke="rgba(0, 242, 255, 0.05)" strokeWidth="0.25" />
-        <line x1="20" y1="0" x2="20" y2="100" stroke="rgba(0, 242, 255, 0.05)" strokeWidth="0.25" />
-        <line x1="40" y1="0" x2="40" y2="100" stroke="rgba(0, 242, 255, 0.05)" strokeWidth="0.25" />
-        <line x1="60" y1="0" x2="60" y2="100" stroke="rgba(0, 242, 255, 0.05)" strokeWidth="0.25" />
-        <line x1="80" y1="0" x2="80" y2="100" stroke="rgba(0, 242, 255, 0.05)" strokeWidth="0.25" />
+        <line x1="0" y1="20" x2="100" y2="20" stroke="color-mix(in srgb, var(--project-cyan) 8%, transparent)" strokeWidth="0.25" />
+        <line x1="0" y1="40" x2="100" y2="40" stroke="color-mix(in srgb, var(--project-cyan) 8%, transparent)" strokeWidth="0.25" />
+        <line x1="0" y1="60" x2="100" y2="60" stroke="color-mix(in srgb, var(--project-cyan) 8%, transparent)" strokeWidth="0.25" />
+        <line x1="0" y1="80" x2="100" y2="80" stroke="color-mix(in srgb, var(--project-cyan) 8%, transparent)" strokeWidth="0.25" />
+        <line x1="20" y1="0" x2="20" y2="100" stroke="color-mix(in srgb, var(--project-cyan) 8%, transparent)" strokeWidth="0.25" />
+        <line x1="40" y1="0" x2="40" y2="100" stroke="color-mix(in srgb, var(--project-cyan) 8%, transparent)" strokeWidth="0.25" />
+        <line x1="60" y1="0" x2="60" y2="100" stroke="color-mix(in srgb, var(--project-cyan) 8%, transparent)" strokeWidth="0.25" />
+        <line x1="80" y1="0" x2="80" y2="100" stroke="color-mix(in srgb, var(--project-cyan) 8%, transparent)" strokeWidth="0.25" />
 
         {/* Tracking crosshair */}
         <motion.g animate={{ x: coords.x - 50, y: coords.y - 50 }} transition={{ type: "spring", stiffness: 80, damping: 15 }}>
@@ -221,34 +222,34 @@ function CvModelVisual({ index }: { index: number }) {
             height="24"
             rx="2"
             fill="none"
-            stroke={locked ? "#00f2ff" : "rgba(0, 242, 255, 0.4)"}
+            stroke={locked ? "var(--project-cyan)" : "color-mix(in srgb, var(--project-cyan) 40%, transparent)"}
             strokeWidth="0.75"
             animate={{ scale: locked ? [1, 1.05, 1] : 1 }}
             transition={{ duration: 0.3 }}
           />
           {/* Corners */}
-          <path d="M 36 44 L 36 36 L 44 36" fill="none" stroke="#00f2ff" strokeWidth="1" />
-          <path d="M 64 36 L 64 44" fill="none" stroke="#00f2ff" strokeWidth="1" />
-          <path d="M 56 36 L 64 36" fill="none" stroke="#00f2ff" strokeWidth="1" />
-          <path d="M 36 56 L 36 64 L 44 64" fill="none" stroke="#00f2ff" strokeWidth="1" />
-          <path d="M 56 64 L 64 64 L 64 56" fill="none" stroke="#00f2ff" strokeWidth="1" />
+          <path d="M 36 44 L 36 36 L 44 36" fill="none" stroke="var(--project-cyan)" strokeWidth="1" />
+          <path d="M 64 36 L 64 44" fill="none" stroke="var(--project-cyan)" strokeWidth="1" />
+          <path d="M 56 36 L 64 36" fill="none" stroke="var(--project-cyan)" strokeWidth="1" />
+          <path d="M 36 56 L 36 64 L 44 64" fill="none" stroke="var(--project-cyan)" strokeWidth="1" />
+          <path d="M 56 64 L 64 64 L 64 56" fill="none" stroke="var(--project-cyan)" strokeWidth="1" />
           
           {/* Tiny center dot */}
-          <circle cx="50" cy="50" r="1" fill="#00f2ff" />
+          <circle cx="50" cy="50" r="1" fill="var(--project-cyan)" />
         </motion.g>
       </svg>
 
       {/* Target details */}
-      <div className="absolute top-3 left-3 text-[8px] font-mono text-[#00f2ff]/70 tracking-wider">
+      <div className="absolute top-3 left-3 text-[8px] font-mono tracking-wider" style={{ color: "color-mix(in srgb, var(--project-cyan) 70%, transparent)" }}>
         CV_FEED: ACTIVE
       </div>
-      <div className="absolute top-3 right-3 text-[8px] font-mono text-[#00f2ff] tracking-wider font-bold">
+      <div className="absolute top-3 right-3 text-[8px] font-mono tracking-wider font-bold" style={{ color: "var(--project-cyan)" }}>
         {locked ? "LOCK_ACQUIRED" : "SCANNING..."}
       </div>
-      <div className="absolute bottom-3 left-3 text-[8px] font-mono text-[#00f2ff]/60 tracking-wider">
+      <div className="absolute bottom-3 left-3 text-[8px] font-mono tracking-wider" style={{ color: "color-mix(in srgb, var(--project-cyan) 60%, transparent)" }}>
         LOC: {coords.x}, {coords.y}
       </div>
-      <div className="absolute bottom-3 right-3 text-[8px] font-mono text-[#00f2ff]/80 font-black">
+      <div className="absolute bottom-3 right-3 text-[8px] font-mono font-black" style={{ color: "color-mix(in srgb, var(--project-cyan) 80%, transparent)" }}>
         CONF: {locked ? "98.2%" : "---"}
       </div>
 
@@ -268,7 +269,7 @@ function AirCanvasVisual({ index }: { index: number }) {
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full md:w-72 h-36 md:h-44 border border-white/10 relative overflow-hidden flex-shrink-0 group-hover:border-[#a855f7]/30 transition-colors duration-300 bg-black/40 backdrop-blur-md rounded-lg p-2"
+      className="w-full md:w-72 h-36 md:h-44 border border-white/10 relative overflow-hidden flex-shrink-0 group-hover:border-[var(--project-purple)] transition-colors duration-300 bg-black/40 backdrop-blur-md rounded-lg p-2"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.06)_0%,transparent_70%)]" />
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
@@ -276,7 +277,7 @@ function AirCanvasVisual({ index }: { index: number }) {
         <motion.path
           d="M 15 50 C 30 20, 40 80, 55 50 C 70 20, 80 80, 85 50"
           fill="none"
-          stroke="#a855f7"
+          stroke="var(--project-purple)"
           strokeWidth="1.5"
           strokeLinecap="round"
           initial={{ pathLength: 0 }}
@@ -291,7 +292,7 @@ function AirCanvasVisual({ index }: { index: number }) {
         {/* Pointer dot tracking path */}
         <motion.circle
           r="3"
-          fill="#a855f7"
+          fill="var(--project-purple)"
           animate={{
             cx: [15, 22.5, 33, 47, 55, 63, 73, 80.5, 85],
             cy: [50, 32, 38, 62, 50, 38, 62, 68, 50],
@@ -302,21 +303,21 @@ function AirCanvasVisual({ index }: { index: number }) {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          style={{ filter: "drop-shadow(0px 0px 4px #a855f7)" }}
+          style={{ filter: "drop-shadow(0px 0px 4px var(--project-purple))" }}
         />
       </svg>
 
       {/* Hud Readouts */}
-      <div className="absolute top-3 left-3 text-[8px] font-mono text-[#a855f7]/60 tracking-wider">
+      <div className="absolute top-3 left-3 text-[8px] font-mono tracking-wider" style={{ color: "color-mix(in srgb, var(--project-purple) 60%, transparent)" }}>
         GESTURE: ENABLED
       </div>
-      <div className="absolute top-3 right-3 text-[8px] font-mono text-[#a855f7]/60 tracking-wider">
+      <div className="absolute top-3 right-3 text-[8px] font-mono tracking-wider" style={{ color: "color-mix(in srgb, var(--project-purple) 60%, transparent)" }}>
         FPS: 60
       </div>
-      <div className="absolute bottom-3 left-3 text-[8px] font-mono text-[#a855f7]/60 tracking-widest">
+      <div className="absolute bottom-3 left-3 text-[8px] font-mono tracking-widest" style={{ color: "color-mix(in srgb, var(--project-purple) 60%, transparent)" }}>
         [ MID_AIR_DRAW ]
       </div>
-      <div className="absolute bottom-3 right-3 text-[8px] font-mono text-[#a855f7]/80 font-black">
+      <div className="absolute bottom-3 right-3 text-[8px] font-mono font-black" style={{ color: "color-mix(in srgb, var(--project-purple) 80%, transparent)" }}>
         TRACKING: ACTIVE
       </div>
 
@@ -336,31 +337,31 @@ function DataFeedVisual({ index }: { index: number }) {
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full md:w-72 h-36 md:h-44 border border-white/10 relative overflow-hidden flex-shrink-0 group-hover:border-[#22c55e]/30 transition-colors duration-300 bg-black/40 backdrop-blur-md rounded-lg p-2"
+      className="w-full md:w-72 h-36 md:h-44 border border-white/10 relative overflow-hidden flex-shrink-0 group-hover:border-[var(--project-green)] transition-colors duration-300 bg-black/40 backdrop-blur-md rounded-lg p-2"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.06)_0%,transparent_70%)]" />
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
         {/* Database nodes */}
-        <circle cx="20" cy="50" r="3" fill="#22c55e" />
-        <circle cx="50" cy="25" r="2.5" fill="#22c55e" fillOpacity="0.6" />
-        <circle cx="50" cy="50" r="2.5" fill="#22c55e" fillOpacity="0.6" />
-        <circle cx="50" cy="75" r="2.5" fill="#22c55e" fillOpacity="0.6" />
-        <circle cx="80" cy="35" r="3" fill="#22c55e" />
-        <circle cx="80" cy="65" r="3" fill="#22c55e" />
+        <circle cx="20" cy="50" r="3" fill="var(--project-green)" />
+        <circle cx="50" cy="25" r="2.5" fill="var(--project-green)" fillOpacity="0.6" />
+        <circle cx="50" cy="50" r="2.5" fill="var(--project-green)" fillOpacity="0.6" />
+        <circle cx="50" cy="75" r="2.5" fill="var(--project-green)" fillOpacity="0.6" />
+        <circle cx="80" cy="35" r="3" fill="var(--project-green)" />
+        <circle cx="80" cy="65" r="3" fill="var(--project-green)" />
 
         {/* Links */}
-        <line x1="20" y1="50" x2="50" y2="25" stroke="#22c55e" strokeWidth="0.5" strokeOpacity="0.2" />
-        <line x1="20" y1="50" x2="50" y2="50" stroke="#22c55e" strokeWidth="0.5" strokeOpacity="0.2" />
-        <line x1="20" y1="50" x2="50" y2="75" stroke="#22c55e" strokeWidth="0.5" strokeOpacity="0.2" />
-        <line x1="50" y1="25" x2="80" y2="35" stroke="#22c55e" strokeWidth="0.5" strokeOpacity="0.2" />
-        <line x1="50" y1="50" x2="80" y2="35" stroke="#22c55e" strokeWidth="0.5" strokeOpacity="0.2" />
-        <line x1="50" y1="50" x2="80" y2="65" stroke="#22c55e" strokeWidth="0.5" strokeOpacity="0.2" />
-        <line x1="50" y1="75" x2="80" y2="65" stroke="#22c55e" strokeWidth="0.5" strokeOpacity="0.2" />
+        <line x1="20" y1="50" x2="50" y2="25" stroke="var(--project-green)" strokeWidth="0.5" strokeOpacity="0.2" />
+        <line x1="20" y1="50" x2="50" y2="50" stroke="var(--project-green)" strokeWidth="0.5" strokeOpacity="0.2" />
+        <line x1="20" y1="50" x2="50" y2="75" stroke="var(--project-green)" strokeWidth="0.5" strokeOpacity="0.2" />
+        <line x1="50" y1="25" x2="80" y2="35" stroke="var(--project-green)" strokeWidth="0.5" strokeOpacity="0.2" />
+        <line x1="50" y1="50" x2="80" y2="35" stroke="var(--project-green)" strokeWidth="0.5" strokeOpacity="0.2" />
+        <line x1="50" y1="50" x2="80" y2="65" stroke="var(--project-green)" strokeWidth="0.5" strokeOpacity="0.2" />
+        <line x1="50" y1="75" x2="80" y2="65" stroke="var(--project-green)" strokeWidth="0.5" strokeOpacity="0.2" />
 
         {/* Moving pulses along lines */}
         <motion.circle
           r="1.5"
-          fill="#22c55e"
+          fill="var(--project-green)"
           animate={{
             cx: [20, 50, 80],
             cy: [50, 25, 35],
@@ -369,7 +370,7 @@ function DataFeedVisual({ index }: { index: number }) {
         />
         <motion.circle
           r="1.5"
-          fill="#22c55e"
+          fill="var(--project-green)"
           animate={{
             cx: [20, 50, 80],
             cy: [50, 50, 65],
@@ -378,7 +379,7 @@ function DataFeedVisual({ index }: { index: number }) {
         />
         <motion.circle
           r="1.5"
-          fill="#22c55e"
+          fill="var(--project-green)"
           animate={{
             cx: [20, 50, 80],
             cy: [50, 75, 65],
@@ -388,16 +389,16 @@ function DataFeedVisual({ index }: { index: number }) {
       </svg>
 
       {/* Hud details */}
-      <div className="absolute top-3 left-3 text-[8px] font-mono text-[#22c55e]/60 tracking-wider">
+      <div className="absolute top-3 left-3 text-[8px] font-mono tracking-wider" style={{ color: "color-mix(in srgb, var(--project-green) 60%, transparent)" }}>
         DATA_PIPELINE
       </div>
-      <div className="absolute top-3 right-3 text-[8px] font-mono text-[#22c55e]/60 tracking-wider">
+      <div className="absolute top-3 right-3 text-[8px] font-mono tracking-wider" style={{ color: "color-mix(in srgb, var(--project-green) 60%, transparent)" }}>
         REQ: 200 OK
       </div>
-      <div className="absolute bottom-3 left-3 text-[8px] font-mono text-[#22c55e]/60 tracking-widest">
+      <div className="absolute bottom-3 left-3 text-[8px] font-mono tracking-widest" style={{ color: "color-mix(in srgb, var(--project-green) 60%, transparent)" }}>
         [ RECOMMEND_SYS ]
       </div>
-      <div className="absolute bottom-3 right-3 text-[8px] font-mono text-[#22c55e]/80 font-black">
+      <div className="absolute bottom-3 right-3 text-[8px] font-mono font-black" style={{ color: "color-mix(in srgb, var(--project-green) 80%, transparent)" }}>
         FEED: STREAMING
       </div>
 

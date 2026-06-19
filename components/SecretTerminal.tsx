@@ -292,7 +292,7 @@ export default function SecretTerminal() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[10000] bg-[#050505]/95 backdrop-blur-lg flex items-center justify-center p-4 md:p-6"
+            className="retro-terminal fixed inset-0 z-[10000] bg-[#050505]/95 backdrop-blur-lg flex items-center justify-center p-4 md:p-6"
           >
             {/* Matrix Digital Rain Background Overlay */}
             {showMatrix && <MatrixRain />}

@@ -47,12 +47,14 @@ export default function Oscilloscope() {
       const w = canvas.width / (window.devicePixelRatio || 1);
       const h = canvas.height / (window.devicePixelRatio || 1);
       
+      const isLight = typeof document !== "undefined" && document.documentElement.classList.contains("light");
+      
       // Clear Screen with slightly glowing CRT phosphor trails
-      ctx.fillStyle = "rgba(8, 8, 8, 0.22)"; // slight decay effect for phosphor simulation
+      ctx.fillStyle = isLight ? "rgba(253, 253, 253, 0.22)" : "rgba(8, 8, 8, 0.22)"; // slight decay effect for phosphor simulation
       ctx.fillRect(0, 0, w, h);
 
       // Draw Grid lines
-      ctx.strokeStyle = "rgba(0, 242, 255, 0.05)";
+      ctx.strokeStyle = isLight ? "rgba(0, 153, 170, 0.08)" : "rgba(0, 242, 255, 0.05)";
       ctx.lineWidth = 1;
       
       // Grid cells
@@ -78,7 +80,7 @@ export default function Oscilloscope() {
       }
 
       // Center Axes (dashed and slightly brighter)
-      ctx.strokeStyle = "rgba(0, 242, 255, 0.15)";
+      ctx.strokeStyle = isLight ? "rgba(0, 153, 170, 0.25)" : "rgba(0, 242, 255, 0.15)";
       ctx.setLineDash([4, 4]);
       
       // Center X axis
@@ -98,9 +100,9 @@ export default function Oscilloscope() {
       phase += 0.08; // Wave animation speed
 
       // --- CH1: Primary Analog Signal (Cyan) ---
-      ctx.shadowBlur = 8;
-      ctx.shadowColor = "rgba(0, 242, 255, 0.7)";
-      ctx.strokeStyle = "#00f2ff";
+      ctx.shadowBlur = isLight ? 4 : 8;
+      ctx.shadowColor = isLight ? "rgba(0, 153, 170, 0.4)" : "rgba(0, 242, 255, 0.7)";
+      ctx.strokeStyle = isLight ? "#0099aa" : "#00f2ff";
       ctx.lineWidth = 1.8;
       ctx.beginPath();
 
@@ -144,8 +146,8 @@ export default function Oscilloscope() {
       ctx.stroke();
 
       // --- CH2: Secondary Logic/Clock Train (Orange) ---
-      ctx.shadowColor = "rgba(255, 87, 34, 0.5)";
-      ctx.strokeStyle = "#ff5722";
+      ctx.shadowColor = isLight ? "rgba(208, 60, 15, 0.3)" : "rgba(255, 87, 34, 0.5)";
+      ctx.strokeStyle = isLight ? "#d03c0f" : "#ff5722";
       ctx.lineWidth = 1.0;
       ctx.beginPath();
       
@@ -174,16 +176,16 @@ export default function Oscilloscope() {
       ctx.shadowBlur = 0;
 
       // --- CRT Dashboard Hud Overlay ---
-      ctx.fillStyle = "rgba(0, 242, 255, 0.4)";
+      ctx.fillStyle = isLight ? "rgba(0, 153, 170, 0.75)" : "rgba(0, 242, 255, 0.4)";
       ctx.font = "9px monospace";
       
       // Top Left Readouts
       ctx.fillText(`CH1: [ANLG] ${waveType.toUpperCase()}`, 12, 18);
-      ctx.fillStyle = "rgba(255, 87, 34, 0.6)";
+      ctx.fillStyle = isLight ? "rgba(208, 60, 15, 0.85)" : "rgba(255, 87, 34, 0.6)";
       ctx.fillText(`CH2: [DGTL] SYS_CLK`, 12, 30);
       
       // Top Right Readouts
-      ctx.fillStyle = "rgba(0, 242, 255, 0.4)";
+      ctx.fillStyle = isLight ? "rgba(0, 153, 170, 0.75)" : "rgba(0, 242, 255, 0.4)";
       const sweepRate = waveType === "noise" ? "10us" : "50us";
       ctx.fillText(`SWEEP: ${sweepRate}/DIV`, w - 110, 18);
       ctx.fillText("TRIG: AUTO [CH1]", w - 110, 30);
@@ -194,7 +196,7 @@ export default function Oscilloscope() {
 
       // --- Hover Measurement Cursors ---
       if (isHovered && hoverPos.x >= 0 && hoverPos.y >= 0) {
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
+        ctx.strokeStyle = isLight ? "rgba(17, 17, 17, 0.2)" : "rgba(255, 255, 255, 0.2)";
         ctx.lineWidth = 0.8;
         ctx.setLineDash([3, 3]);
 
@@ -210,15 +212,16 @@ export default function Oscilloscope() {
         ctx.lineTo(w, hoverPos.y);
         ctx.stroke();
 
-        ctx.setLineDash([]); // Reset dashed
+        // Reset dashed
+        ctx.setLineDash([]);
 
         // Calculate physical representation values
         const deltaT = ((hoverPos.x / w) * 200).toFixed(1); // represented in microseconds
         const deltaV = (((h / 2 - hoverPos.y) / (h / 2)) * 3.3).toFixed(2); // represented in volts
 
         // Cursor coordinates tag background
-        ctx.fillStyle = "rgba(10, 10, 10, 0.85)";
-        ctx.strokeStyle = "rgba(0, 242, 255, 0.3)";
+        ctx.fillStyle = isLight ? "rgba(240, 240, 240, 0.95)" : "rgba(10, 10, 10, 0.85)";
+        ctx.strokeStyle = isLight ? "rgba(0, 153, 170, 0.4)" : "rgba(0, 242, 255, 0.3)";
         ctx.lineWidth = 1;
         
         const tagW = 75;
@@ -236,7 +239,7 @@ export default function Oscilloscope() {
         ctx.stroke();
 
         // Coordinates tag text
-        ctx.fillStyle = "#ffffff";
+        ctx.fillStyle = isLight ? "#111111" : "#ffffff";
         ctx.font = "9.5px monospace";
         ctx.fillText(`ΔT: ${deltaT} us`, tagX + 6, tagY + 14);
         ctx.fillText(`ΔV: ${deltaV} V`, tagX + 6, tagY + 26);

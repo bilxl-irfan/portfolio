@@ -21,7 +21,7 @@ function CircuitLogo() {
         cx="24"
         cy="24"
         r="15"
-        stroke="white"
+        stroke="var(--foreground)"
         strokeWidth="2"
         strokeOpacity="0.85"
         initial={{ pathLength: 0, opacity: 0 }}
@@ -34,7 +34,7 @@ function CircuitLogo() {
         cx="24"
         cy="24"
         r="8"
-        stroke="#00f2ff"
+        stroke="var(--accent)"
         strokeWidth="2"
         initial={{ pathLength: 0, opacity: 0 }}
         animate={{ pathLength: 1, opacity: 1 }}
@@ -46,7 +46,7 @@ function CircuitLogo() {
         cx="24"
         cy="24"
         r="3"
-        fill="#00f2ff"
+        fill="var(--accent)"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: [0, 1, 1.1, 1], opacity: [0, 1, 1, 1] }}
         transition={{ duration: 1.2, delay: 0.5, repeat: Infinity, repeatDelay: 2 }}
@@ -58,7 +58,7 @@ function CircuitLogo() {
         y1="5"
         x2="24"
         y2="9"
-        stroke="white"
+        stroke="var(--foreground)"
         strokeWidth="2"
         strokeLinecap="round"
         initial={{ y2: 5, opacity: 0 }}
@@ -72,7 +72,7 @@ function CircuitLogo() {
         y1="24"
         x2="12"
         y2="24"
-        stroke="white"
+        stroke="var(--foreground)"
         strokeWidth="2"
         strokeLinecap="round"
         initial={{ x2: 8, opacity: 0 }}
@@ -86,7 +86,7 @@ function CircuitLogo() {
         y1="36"
         x2="33"
         y2="33"
-        stroke="white"
+        stroke="var(--foreground)"
         strokeWidth="2"
         strokeLinecap="round"
         initial={{ x1: 33, y1: 33, opacity: 0 }}
