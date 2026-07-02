@@ -56,7 +56,7 @@ export default function About() {
                 University of Waterloo
               </span>{" "}
               in September. Specializing in embedded systems, real-time computing, and AI at the edge. 
-              Co-founder of ECEC club. Building production systems that run unsupervised.
+              Building production systems that run unsupervised.
             </p>
             <div className="grid grid-cols-2 gap-6 pt-8 border-t border-white/10">
               <div>
